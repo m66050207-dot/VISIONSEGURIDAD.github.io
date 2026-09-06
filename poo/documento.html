@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitud de Presupuesto</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #05070a;
+      color: #fff;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 650px;
+      padding: 35px;
+      background: #0b111a;
+      border: 1px solid #123d66;
+      border-radius: 16px;
+      box-shadow: 0 0 35px rgba(0, 119, 255, 0.15);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      color: #168cff;
+      text-align: center;
+      font-size: 30px;
+    }
+
+    .subtitle {
+      margin-bottom: 30px;
+      color: #8da4bb;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #dcecff;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1px solid #1d4f7c;
+      border-radius: 8px;
+      outline: none;
+      background: #05090e;
+      color: #fff;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #168cff;
+      box-shadow: 0 0 0 3px rgba(22, 140, 255, 0.12);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    select option {
+      background: #05090e;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #0878d1;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    button:hover {
+      background: #0b94ff;
+      box-shadow: 0 0 20px rgba(11, 148, 255, 0.3);
+    }
+
+    #mensaje {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #147fd1;
+      border-radius: 8px;
+      background: #071b2e;
+      color: #45aaff;
+      text-align: center;
+      font-weight: bold;
+      animation: aparecer 0.3s ease;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(-5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 25px 20px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+    <h1>Solicita tu presupuesto</h1>
+    <p class="subtitle">
+      Completa el formulario y cuéntanos sobre tu proyecto.
+    </p>
+
+    <form id="formulario">
+
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          placeholder="Tu nombre"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input
+          type="tel"
+          id="telefono"
+          name="telefono"
+          placeholder="Tu número de teléfono"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="inmueble">Tipo de inmueble</label>
+        <select id="inmueble" name="inmueble" required>
+          <option value="">Selecciona una opción</option>
+          <option value="casa">Casa</option>
+          <option value="departamento">Departamento</option>
+          <option value="oficina">Oficina</option>
+          <option value="local">Local comercial</option>
+          <option value="bodega">Bodega</option>
+          <option value="industria">Nave / Industria</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="camaras">Número aproximado de cámaras</label>
+        <input
+          type="number"
+          id="camaras"
+          name="camaras"
+          min="1"
+          placeholder="Ej. 8"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="mensaje-texto">Mensaje</label>
+        <textarea
+          id="mensaje-texto"
+          name="mensaje"
+          placeholder="Cuéntanos un poco sobre lo que necesitas..."
+        ></textarea>
+      </div>
+
+      <button type="submit">Enviar solicitud</button>
+
+      <div id="mensaje">
+        No hay presupuesto para esto.
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      document.getElementById("mensaje").style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
+
+
